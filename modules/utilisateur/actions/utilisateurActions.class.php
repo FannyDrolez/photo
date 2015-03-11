@@ -1,6 +1,15 @@
 <?php
 class utilisateurActions extends baseActions {
- 
+
+public function executeAjaxloginexiste($login){
+	$sql = new UtilisateurSQL();
+	$result = $sql->findBylogin($login)->execute();
+if(count($result)==0){
+	$this->message = "Ce login est disponible";
+}else{
+	$this->message = "Ce login n'est pas disponible";
+}}
+
     public function executeInscription() {
 		if(isset($_POST['login'])){
 			$sql = new UtilisateurSQL();
@@ -38,9 +47,11 @@ class utilisateurActions extends baseActions {
     */
 
   public function executeprofil() {
-  	$sql = new UtilisateurSQL();
-  	$this->utilisateur = $sql->findById($utilisateur_id);
-  }
+		$sql = new UtilisateurSQL();
+		$this->utilisateur = $sql->findById($_SESSION['id']);
+		if($this->utilisateur==false) header("Location".URL);
+
+	}
 
  /** 
   *Fonction de déconnexion
@@ -53,7 +64,12 @@ class utilisateurActions extends baseActions {
   
 }
 
+//photo que de cette album
 
+/* public function executeAlbum($ida){
+	$sql = new PhotoSQL();
+	$this->photos = $sql->findWithCondition("id IN(SELECT photo_id FROM contient WHERE album_id=?", array($ida))orderBy("nom")->execute();*/
+//}
 
 
 

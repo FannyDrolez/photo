@@ -5,7 +5,7 @@
  */
 class  PDODBAdapter implements DBAdapter{
     
-    private $pdo = false;
+    public $pdo = false;
     protected static $instance;
 
     /**

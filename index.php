@@ -79,13 +79,8 @@
 
 <!-- Ici le header et tout ce que vous voulez -->
 
-<header>
-<img src="Photos/photo_header3.jpg" alt="photo_header3" class="photo_header3"/>
-</header>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">   
-       <?php
+<h1>Bienvenue sur mon album photo</h1>
+<?php
 $URL = URL;
 if(isset($_SESSION['id'])) { 
 	echo "Bonjour ". $_SESSION["login"];
@@ -93,40 +88,22 @@ if(isset($_SESSION['id'])) {
 	echo "<a href='$URL/photos/upload'>Uploader</a>";
 	echo "<a href='$URL/utilisateur/profil'>Profil</a>";
 } else {
-	echo "<a href='$URL/utilisateur/inscription' id='inscription'>Inscription</a>";
-	echo "<a href='$URL/utilisateur/connexion'>Connexion</a>";
+	echo "<a href='$URL/utilisateur/inscription'>Inscrivez vous</a>";
+	echo "<br /><a href='$URL/utilisateur/connexion'>connectez vous</a>";
 }
 ?>
-        
-        <?php
+
+<?php
 if(isset($info)){
 	echo "<div class='alert $style'>$info</div>";
 }
 ?>
 
-        <!-- <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button> -->
-        </div>
-    </nav>
-    
-
-
-
-
-<p id='Titre'>Derniers Ajouts</p>
-
-
-
 <?php echo $result; // $result contient le résultat de module->action. ?>
 
 
 
-<footer>Bogaert Emeline et Drolez Fanny ©</footer>
+<footer>Le pied de la page</footer>
 <!-- Ici le footer et tout ce que vous voulez -->
 
 <div class="modal"><!-- Place at bottom of page --></div>

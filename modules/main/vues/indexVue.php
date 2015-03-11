@@ -1,7 +1,7 @@
 <?php
 if(isset($_SESSION['id'])){
-	foreach ($this->photo as $c) {
-		echo $c->link();
-	}
+	echo "J'ai $this->nbSuiveur personnes qui me suivent";
+	echo "J'ai $this->nbSuivi personnes que je suis";
+	
 }
 ?>

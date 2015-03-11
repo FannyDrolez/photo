@@ -1,30 +1,22 @@
-//Ajouter des photos
-//Chercher des gens
-//Voir un profil pour décider si on suit la personne ou pas
-//Suivre des personnes... 
-
 <?php
 class photosActions extends baseActions {
-    public function executesupprimer($idp){
-        if(!isset($_SESSION['id'])){
-            header("Location:index.php");
-        }
-        
+    public function executesupprimer($photo_id){
+    if(!isset($_SESSION['id'])){
+        header("location:index.php");}
         $sql = new PhotoSQL();
-        $c = $sql->findById($idp);
-        if($c==false || $c->utilisateur_id=$SESSION['id'])
-            header("Location:error404.php");
+        $c = $sql->findById($photo_id);
+        if($c==false || $c->utilisateur_id!=$_SESSION['id'])
+            header("location:".URL."error404.php");
         
-        unlick($c->fichier);
+        unlink($c->fichier);
         $c->delete();
-        $_SESSION['info']="Votre photos à bien était supprimé";
-        header(Location:".$_SERVER[HTTP_REFERER]");
-           
+        $_SESSION['info']='Votre photo à bien été supprimée';
+        header("Location:".$_SERVER['HTTP_REFERER']);
+    }
     public function executeupload(){
         if(!isset($_SESSION['id'])){
             header("location:".URL);
         }
- print_r($_FILES);
         if(isset($_FILES['photo'])){
             $error = false;
             $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
