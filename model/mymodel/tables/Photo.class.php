@@ -28,6 +28,7 @@ class Photo extends Table {
     }
     
     public function link(){
-        return "<a href='".URL."/utilisateur/profil/$this->utilisateur_id'><img src='$this->fichier' /></a>";
-    }
+        return "<a href='".URL."/utilisateur/profil/$this->utilisateur_id'><img src='$this->fichier'/></a>";
+            }
+
 }
