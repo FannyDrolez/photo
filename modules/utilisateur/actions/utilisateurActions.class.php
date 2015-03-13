@@ -24,6 +24,12 @@ if(count($result)==0){
 		}
     }
 	
+
+
+	public function executeRecherche() {
+		$sql = new UtilisateurSQL();
+		$this->utilisateurs = $sql->findWithCondition("login like CONCAT(?,'%')",array($_POST['recherche']))->orderBy("login")->execute();
+	}
     /** 
     * Fonction de connexion, on reçoit dans le Post le login et le mot de passe
     */
@@ -46,11 +52,14 @@ if(count($result)==0){
     * Fonction de changement de profil
     */
 
-  public function executeprofil() {
+  public function executeprofil($id) {
 		$sql = new UtilisateurSQL();
-		$this->utilisateur = $sql->findById($_SESSION['id']);
+		$this->utilisateur = $sql->findById($id);
 		if($this->utilisateur==false) header("Location".URL);
-
+		$sqlP=new PhotoSQL();
+		$this->photo=$sqlP->findByutilisateur_id($id)
+      		->orderBy("post_date DESC")
+      		->execute();
 	}
 
  /** 
@@ -61,6 +70,14 @@ if(count($result)==0){
 	    header("location:".URL);
   }
 
+  public function executesuivre($suivi_id){
+  	if($_SESSION['id']==false)
+  		return;
+  	$s = new Suit($_SESSION['id'],$suivi_id);
+  	$s -> save();
+  	header("Location:".URL."/utilisateur/profil/$suivi_id");
+  }
+//Faire le désabonnement
   
 }
 

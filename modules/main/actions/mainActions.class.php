@@ -7,11 +7,13 @@ class mainActions extends baseActions {
       	$this->photo=$sql->findByutilisateur_id($_SESSION['id'])
       		->orderBy("post_date DESC")
       		->execute();
-      }
       $sqlU = new UtilisateurSQL();
       $this->nbSuiveur = $sqlU->nbAbonne($_SESSION['id']);
        $sqlu = new UtilisateurSQL();
       $this->nbSuivi = $sqlu->nbAbonnement($_SESSION['id']);
+
+      //<p><a href='index.php?page=update_avatar'>Changer votre photo de profil</a></p>
+  }
 }
 }
 ?>

@@ -85,8 +85,9 @@ $URL = URL;
 if(isset($_SESSION['id'])) { 
 	echo "Bonjour ". $_SESSION["login"];
 	echo "<a href='$URL/utilisateur/deconnexion'>Deconnexion</a>";
-	echo "<a href='$URL/photos/upload'>Uploader</a>";
-	echo "<a href='$URL/utilisateur/profil'>Profil</a>";
+	echo "<a href='$URL'>Mes photos</a>";
+	echo "<a href='$URL/utilisateur/profil'>Mes Abonnements</a>";
+	echo "<form action='$URL/utilisateur/recherche' method='post'><input type='text' placeholder='Recherche...' name='recherche' /><input type='button' value='Ok'/></form>";
 } else {
 	echo "<a href='$URL/utilisateur/inscription'>Inscrivez vous</a>";
 	echo "<br /><a href='$URL/utilisateur/connexion'>connectez vous</a>";

@@ -21,4 +21,6 @@ class Utilisateur extends Table {
         $s = new Suit($this->id,$suivi_id);
         $s->save();
     }
+
+    
 }
