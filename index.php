@@ -78,12 +78,8 @@
 <body>
 
 <!-- Ici le header et tout ce que vous voulez -->
-<header></header>
+
 <h1>Bienvenue sur mon album photo</h1>
-
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<br>
-
 <?php
 $URL = URL;
 if(isset($_SESSION['id'])) { 
@@ -95,9 +91,7 @@ if(isset($_SESSION['id'])) {
 	echo "<a href='$URL/utilisateur/inscription'>Inscrivez vous</a>";
 	echo "<br /><a href='$URL/utilisateur/connexion'>connectez vous</a>";
 }
-?></nav>
-<br>
-<br>
+?>
 
 <?php
 if(isset($info)){
